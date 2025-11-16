@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,18 +7,67 @@ import Icon from "@/components/ui/icon";
 
 const Index = () => {
   const [chatMessages, setChatMessages] = useState([
-    { role: "assistant", content: "Привет! Я помогу настроить вашу рекламную кампанию. Какой у вас бюджет и цель?" }
+    { role: "assistant", content: "Привет! Я AI-ассистент для управления рекламой. Просто опишите задачу обычными словами 👋" }
   ]);
   const [inputValue, setInputValue] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const handleSendMessage = () => {
-    if (!inputValue.trim()) return;
+  const suggestions = [
+    "Настрой рекламу с бюджетом 50к",
+    "Увеличь конверсию на 30%",
+    "Снизь стоимость клика",
+    "Найди новую аудиторию"
+  ];
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatMessages, isTyping]);
+
+  const getSmartResponse = (userMessage: string): string => {
+    const msg = userMessage.toLowerCase();
     
-    setChatMessages([...chatMessages, 
-      { role: "user", content: inputValue },
-      { role: "assistant", content: "Отлично! Я проанализирую данные и предложу оптимальную стратегию через несколько секунд..." }
-    ]);
+    if (msg.includes("бюджет") || msg.includes("50") || msg.includes("100")) {
+      return "Отлично! Я вижу ваш бюджет. Сейчас проанализирую:\n\n📊 Анализ конкурентов...\n🎯 Подбор целевой аудитории...\n💡 Оптимальная стратегия готова!\n\nРекомендую распределить:\n• 60% — поисковая реклама\n• 30% — таргетированная\n• 10% — ретаргетинг\n\nНачнём?";
+    }
+    
+    if (msg.includes("конверс") || msg.includes("увелич")) {
+      return "Понял задачу! Проверяю текущие кампании:\n\n✅ Нашёл 3 точки роста:\n1. A/B тест креативов (+15-20%)\n2. Уточнение аудитории (+10-15%)\n3. Оптимизация времени показа (+5-10%)\n\nВместе дадут ~30-45% роста. Применить?";
+    }
+    
+    if (msg.includes("клик") || msg.includes("снизь") || msg.includes("дешевле")) {
+      return "Анализирую стоимость кликов...\n\n📉 Нашёл способы снизить CPC:\n• Минус-слова: -25₽ за клик\n• Таргетинг по времени: -18₽\n• Корректировка ставок: -12₽\n\nИтого: снижение на ~40-50%. Внедряю?";
+    }
+    
+    if (msg.includes("аудитор") || msg.includes("найди") || msg.includes("новую")) {
+      return "Ищу похожие аудитории...\n\n🔍 Найдено 4 перспективных сегмента:\n1. Lookalike 1% — 180k чел. (высокая вероятность)\n2. Интересы смежных категорий — 340k чел.\n3. Поведенческий таргетинг — 95k чел.\n4. Ретаргетинг посетителей — 12k чел.\n\nЗапустить тест с бюджетом 10-15к?";
+    }
+
+    return "Понял! Анализирую вашу задачу...\n\n✨ Через пару секунд предложу оптимальное решение с конкретными цифрами и прогнозом результата.\n\nМожете уточнить детали или я сам подберу лучший вариант?";
+  };
+
+  const handleSendMessage = async () => {
+    if (!inputValue.trim() || isTyping) return;
+    
+    const userMsg = inputValue;
     setInputValue("");
+    setChatMessages(prev => [...prev, { role: "user", content: userMsg }]);
+    
+    setIsTyping(true);
+    
+    setTimeout(() => {
+      const response = getSmartResponse(userMsg);
+      setChatMessages(prev => [...prev, { role: "assistant", content: response }]);
+      setIsTyping(false);
+    }, 1200 + Math.random() * 800);
+  };
+
+  const handleSuggestionClick = (suggestion: string) => {
+    setInputValue(suggestion);
   };
 
   return (
@@ -89,9 +138,9 @@ const Index = () => {
                 <span className="ml-auto text-sm font-medium">AI Ассистент</span>
               </div>
               
-              <div className="space-y-4 h-80 overflow-y-auto mb-4">
+              <div className="space-y-4 h-80 overflow-y-auto mb-4 px-2">
                 {chatMessages.map((msg, idx) => (
-                  <div key={idx} className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : ''}`}>
+                  <div key={idx} className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : ''} animate-fade-in`}>
                     {msg.role === 'assistant' && (
                       <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
                         <Icon name="Bot" size={16} className="text-white" />
@@ -102,23 +151,58 @@ const Index = () => {
                         ? 'bg-gradient-to-br from-primary to-accent text-white' 
                         : 'bg-muted'
                     }`}>
-                      <p className="text-sm">{msg.content}</p>
+                      <p className="text-sm whitespace-pre-line">{msg.content}</p>
                     </div>
                   </div>
                 ))}
+                {isTyping && (
+                  <div className="flex gap-3 animate-fade-in">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+                      <Icon name="Bot" size={16} className="text-white" />
+                    </div>
+                    <div className="bg-muted rounded-2xl px-4 py-3">
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                        <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                        <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
               </div>
 
-              <div className="flex gap-2">
-                <Input 
-                  placeholder="Напишите вашу задачу..."
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                  className="flex-1"
-                />
-                <Button onClick={handleSendMessage} className="bg-gradient-to-r from-primary to-accent">
-                  <Icon name="Send" size={18} />
-                </Button>
+              <div className="space-y-3">
+                {chatMessages.length === 1 && (
+                  <div className="flex flex-wrap gap-2">
+                    {suggestions.map((suggestion, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => handleSuggestionClick(suggestion)}
+                        className="text-xs px-3 py-1.5 rounded-full bg-muted hover:bg-muted/80 transition-colors border border-border"
+                      >
+                        {suggestion}
+                      </button>
+                    ))}
+                  </div>
+                )}
+                <div className="flex gap-2">
+                  <Input 
+                    placeholder="Напишите задачу обычными словами..."
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                    className="flex-1"
+                    disabled={isTyping}
+                  />
+                  <Button 
+                    onClick={handleSendMessage} 
+                    className="bg-gradient-to-r from-primary to-accent"
+                    disabled={isTyping || !inputValue.trim()}
+                  >
+                    <Icon name="Send" size={18} />
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
