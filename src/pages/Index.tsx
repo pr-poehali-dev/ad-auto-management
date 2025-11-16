@@ -72,21 +72,20 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <nav className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-              <Icon name="Zap" size={20} className="text-white" />
+      <nav className="bg-background/80 backdrop-blur-xl sticky top-0 z-50 border-b border-border/50">
+        <div className="container mx-auto px-6 py-5 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary via-secondary to-accent rounded-2xl flex items-center justify-center shadow-lg">
+              <Icon name="Sparkles" size={22} className="text-white" />
             </div>
-            <span className="font-heading font-bold text-xl">AdBot AI</span>
+            <span className="font-heading font-bold text-2xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">AdBot</span>
           </div>
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-sm font-medium hover:text-primary transition-colors">Возможности</a>
-            <a href="#cases" className="text-sm font-medium hover:text-primary transition-colors">Кейсы</a>
-            <a href="#integrations" className="text-sm font-medium hover:text-primary transition-colors">Интеграции</a>
-            <a href="#api" className="text-sm font-medium hover:text-primary transition-colors">API</a>
-            <Button size="sm" className="bg-gradient-to-r from-primary to-accent">
-              Начать бесплатно
+          <div className="hidden md:flex items-center gap-6">
+            <a href="#features" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Возможности</a>
+            <a href="#cases" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Кейсы</a>
+            <a href="#integrations" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Интеграции</a>
+            <Button size="sm" className="bg-gradient-to-r from-primary via-secondary to-accent text-white shadow-lg hover:shadow-xl transition-all">
+              Попробовать ✨
             </Button>
           </div>
         </div>
@@ -95,22 +94,22 @@ const Index = () => {
       <section className="container mx-auto px-6 py-20 md:py-32">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in">
-            <Badge className="bg-accent/10 text-accent border-accent/20">AI-powered автоматизация</Badge>
-            <h1 className="font-heading text-5xl md:text-6xl font-bold leading-tight">
-              Управляй рекламой через <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">диалог</span>
+            <Badge className="bg-gradient-to-r from-accent/20 to-primary/20 text-primary border-primary/30 text-sm px-4 py-1.5">✨ AI-автоматизация</Badge>
+            <h1 className="font-heading text-5xl md:text-7xl font-black leading-tight">
+              Реклама на <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">автопилоте</span>
             </h1>
-            <p className="text-lg text-muted-foreground">
-              Настраивай, оптимизируй и масштабируй рекламные кампании с помощью AI-ассистента. 
-              Без сложных интерфейсов — просто опиши задачу.
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Просто скажи что нужно — AI всё настроит, оптимизирует и масштабирует. 
+              Никаких сложных панелей 🚀
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="bg-gradient-to-r from-primary to-accent">
-                <Icon name="Sparkles" size={18} className="mr-2" />
-                Попробовать демо
+              <Button size="lg" className="bg-gradient-to-r from-primary via-secondary to-accent text-white shadow-2xl hover:shadow-accent/50 transition-all text-lg px-8 py-6 rounded-2xl">
+                <Icon name="Rocket" size={20} className="mr-2" />
+                Запустить бесплатно
               </Button>
-              <Button size="lg" variant="outline">
-                <Icon name="Play" size={18} className="mr-2" />
-                Смотреть видео
+              <Button size="lg" variant="outline" className="text-lg px-8 py-6 rounded-2xl border-2 hover:bg-muted/50">
+                <Icon name="Play" size={20} className="mr-2" />
+                Как работает
               </Button>
             </div>
             <div className="flex items-center gap-8 pt-4">
@@ -129,13 +128,13 @@ const Index = () => {
             </div>
           </div>
 
-          <Card className="shadow-2xl border-2 animate-scale-in">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-2 mb-4 pb-4 border-b">
-                <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                <span className="ml-auto text-sm font-medium">AI Ассистент</span>
+          <Card className="shadow-2xl border-2 border-primary/20 animate-scale-in bg-gradient-to-br from-card to-muted/30 backdrop-blur">
+            <CardContent className="p-8">
+              <div className="flex items-center gap-3 mb-6 pb-5 border-b border-border/50">
+                <div className="w-4 h-4 rounded-full bg-gradient-to-r from-red-400 to-red-500 shadow-lg"></div>
+                <div className="w-4 h-4 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 shadow-lg"></div>
+                <div className="w-4 h-4 rounded-full bg-gradient-to-r from-green-400 to-green-500 shadow-lg"></div>
+                <span className="ml-auto text-sm font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">✨ AI Ассистент</span>
               </div>
               
               <div className="space-y-4 h-80 overflow-y-auto mb-4 px-2">
@@ -146,25 +145,25 @@ const Index = () => {
                         <Icon name="Bot" size={16} className="text-white" />
                       </div>
                     )}
-                    <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                    <div className={`max-w-[80%] rounded-3xl px-5 py-4 shadow-md ${
                       msg.role === 'user' 
-                        ? 'bg-gradient-to-br from-primary to-accent text-white' 
-                        : 'bg-muted'
+                        ? 'bg-gradient-to-br from-primary via-secondary to-accent text-white' 
+                        : 'bg-gradient-to-br from-card to-muted border border-border/50'
                     }`}>
-                      <p className="text-sm whitespace-pre-line">{msg.content}</p>
+                      <p className="text-sm whitespace-pre-line leading-relaxed">{msg.content}</p>
                     </div>
                   </div>
                 ))}
                 {isTyping && (
                   <div className="flex gap-3 animate-fade-in">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center flex-shrink-0 shadow-lg">
                       <Icon name="Bot" size={16} className="text-white" />
                     </div>
-                    <div className="bg-muted rounded-2xl px-4 py-3">
-                      <div className="flex gap-1">
-                        <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                        <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                        <div className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                    <div className="bg-gradient-to-br from-card to-muted rounded-3xl px-5 py-4 shadow-md border border-border/50">
+                      <div className="flex gap-1.5">
+                        <div className="w-2.5 h-2.5 bg-gradient-to-r from-primary to-secondary rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                        <div className="w-2.5 h-2.5 bg-gradient-to-r from-secondary to-accent rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                        <div className="w-2.5 h-2.5 bg-gradient-to-r from-accent to-primary rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
                       </div>
                     </div>
                   </div>
@@ -179,7 +178,7 @@ const Index = () => {
                       <button
                         key={idx}
                         onClick={() => handleSuggestionClick(suggestion)}
-                        className="text-xs px-3 py-1.5 rounded-full bg-muted hover:bg-muted/80 transition-colors border border-border"
+                        className="text-xs px-4 py-2 rounded-full bg-gradient-to-r from-muted to-muted/50 hover:from-primary/10 hover:to-secondary/10 transition-all border border-border/50 hover:border-primary/30 shadow-sm hover:shadow-md"
                       >
                         {suggestion}
                       </button>
@@ -188,19 +187,19 @@ const Index = () => {
                 )}
                 <div className="flex gap-2">
                   <Input 
-                    placeholder="Напишите задачу обычными словами..."
+                    placeholder="Напиши что нужно сделать..."
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                    className="flex-1"
+                    className="flex-1 bg-muted/50 border-border/50 focus:border-primary/50 rounded-2xl px-5 py-3 text-base"
                     disabled={isTyping}
                   />
                   <Button 
                     onClick={handleSendMessage} 
-                    className="bg-gradient-to-r from-primary to-accent"
+                    className="bg-gradient-to-r from-primary via-secondary to-accent text-white shadow-lg hover:shadow-xl transition-all rounded-2xl px-6"
                     disabled={isTyping || !inputValue.trim()}
                   >
-                    <Icon name="Send" size={18} />
+                    <Icon name="Send" size={20} />
                   </Button>
                 </div>
               </div>
@@ -209,13 +208,13 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="features" className="bg-muted/30 py-20">
+      <section id="features" className="py-24">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16 animate-slide-up">
-            <Badge className="mb-4">Возможности</Badge>
-            <h2 className="font-heading text-4xl font-bold mb-4">Всё для эффективной рекламы</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              От анализа аудитории до автоматической оптимизации — AI делает всю работу за вас
+          <div className="text-center mb-20 animate-slide-up">
+            <Badge className="mb-5 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary border-primary/30 text-sm px-4 py-1.5">✨ Возможности</Badge>
+            <h2 className="font-heading text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">Что умеет AI</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Просто скажи что нужно — и всё заработает самостоятельно
             </p>
           </div>
 
@@ -258,13 +257,13 @@ const Index = () => {
                 color: "from-indigo-500 to-violet-500"
               }
             ].map((feature, idx) => (
-              <Card key={idx} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2">
-                <CardContent className="p-6">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                    <Icon name={feature.icon as any} size={24} className="text-white" />
+              <Card key={idx} className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 border-border/50 hover:border-primary/30 bg-gradient-to-br from-card to-muted/20 backdrop-blur rounded-3xl overflow-hidden">
+                <CardContent className="p-8">
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all shadow-xl`}>
+                    <Icon name={feature.icon as any} size={28} className="text-white" />
                   </div>
-                  <h3 className="font-heading text-xl font-semibold mb-3">{feature.title}</h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <h3 className="font-heading text-2xl font-bold mb-4 group-hover:text-primary transition-colors">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -272,11 +271,11 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="cases" className="py-20">
+      <section id="cases" className="py-24 bg-gradient-to-b from-background to-muted/20">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <Badge className="mb-4">Кейсы</Badge>
-            <h2 className="font-heading text-4xl font-bold mb-4">Реальные результаты</h2>
+          <div className="text-center mb-20">
+            <Badge className="mb-5 bg-gradient-to-r from-secondary/20 to-accent/20 text-secondary border-secondary/30 text-sm px-4 py-1.5">📈 Кейсы</Badge>
+            <h2 className="font-heading text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">Реальные результаты</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -303,27 +302,27 @@ const Index = () => {
                 description: "Онлайн-школа увеличила количество регистраций при меньшем бюджете"
               }
             ].map((caseItem, idx) => (
-              <Card key={idx} className="border-2 hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between mb-4">
+              <Card key={idx} className="border-2 border-border/50 hover:border-primary/30 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-card to-muted/20 backdrop-blur rounded-3xl overflow-hidden group">
+                <CardContent className="p-8">
+                  <div className="flex items-start justify-between mb-6">
                     <div>
-                      <h3 className="font-heading text-xl font-bold">{caseItem.company}</h3>
-                      <p className="text-sm text-muted-foreground">{caseItem.industry}</p>
+                      <h3 className="font-heading text-2xl font-bold group-hover:text-primary transition-colors">{caseItem.company}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{caseItem.industry}</p>
                     </div>
                   </div>
                   
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div className="bg-green-50 dark:bg-green-950/20 rounded-lg p-3">
-                      <div className="text-2xl font-bold text-green-600">{caseItem.roas}</div>
-                      <div className="text-xs text-muted-foreground">ROAS</div>
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-2xl p-4 shadow-sm">
+                      <div className="text-3xl font-black bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">{caseItem.roas}</div>
+                      <div className="text-xs font-medium text-muted-foreground mt-1">ROAS</div>
                     </div>
-                    <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-3">
-                      <div className="text-2xl font-bold text-blue-600">{caseItem.cpa}</div>
-                      <div className="text-xs text-muted-foreground">CPA</div>
+                    <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-2xl p-4 shadow-sm">
+                      <div className="text-3xl font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">{caseItem.cpa}</div>
+                      <div className="text-xs font-medium text-muted-foreground mt-1">CPA</div>
                     </div>
                   </div>
                   
-                  <p className="text-sm text-muted-foreground">{caseItem.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{caseItem.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -331,13 +330,13 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="integrations" className="bg-muted/30 py-20">
+      <section id="integrations" className="py-24">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <Badge className="mb-4">Интеграции</Badge>
-            <h2 className="font-heading text-4xl font-bold mb-4">Работаем со всеми платформами</h2>
-            <p className="text-lg text-muted-foreground">
-              Подключайте рекламные площадки в один клик
+          <div className="text-center mb-20">
+            <Badge className="mb-5 bg-gradient-to-r from-accent/20 to-primary/20 text-accent border-accent/30 text-sm px-4 py-1.5">🔌 Интеграции</Badge>
+            <h2 className="font-heading text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">Все площадки в одном месте</h2>
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Подключай за клик и управляй всем через чат
             </p>
           </div>
 
@@ -352,12 +351,12 @@ const Index = () => {
               { name: "Telegram Ads", icon: "Send" },
               { name: "Instagram", icon: "Camera" }
             ].map((platform, idx) => (
-              <Card key={idx} className="group hover:border-primary transition-all cursor-pointer">
-                <CardContent className="p-6 flex flex-col items-center text-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-muted group-hover:bg-primary/10 flex items-center justify-center transition-colors">
-                    <Icon name={platform.icon as any} size={24} className="text-muted-foreground group-hover:text-primary" />
+              <Card key={idx} className="group hover:border-primary/50 transition-all duration-300 cursor-pointer bg-gradient-to-br from-card to-muted/20 backdrop-blur rounded-2xl hover:shadow-xl hover:-translate-y-1">
+                <CardContent className="p-6 flex flex-col items-center text-center gap-4">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-muted to-muted/50 group-hover:from-primary/20 group-hover:to-secondary/20 flex items-center justify-center transition-all group-hover:scale-110 shadow-md">
+                    <Icon name={platform.icon as any} size={26} className="text-muted-foreground group-hover:text-primary transition-colors" />
                   </div>
-                  <span className="font-medium text-sm">{platform.name}</span>
+                  <span className="font-semibold text-sm group-hover:text-primary transition-colors">{platform.name}</span>
                 </CardContent>
               </Card>
             ))}
@@ -434,17 +433,18 @@ Authorization: Bearer YOUR_API_KEY
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-primary via-accent to-secondary">
-        <div className="container mx-auto px-6 text-center text-white">
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6">
-            Готовы увеличить эффективность рекламы?
+      <section className="py-32 bg-gradient-to-br from-primary via-secondary to-accent relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-30"></div>
+        <div className="container mx-auto px-6 text-center text-white relative z-10">
+          <h2 className="font-heading text-5xl md:text-7xl font-black mb-8 leading-tight">
+            Готов увеличить ROAS в 3 раза?
           </h2>
-          <p className="text-lg mb-8 opacity-90 max-w-2xl mx-auto">
-            Присоединяйтесь к 2000+ компаниям, которые уже автоматизировали свою рекламу с AdBot AI
+          <p className="text-xl md:text-2xl mb-12 opacity-95 max-w-3xl mx-auto leading-relaxed">
+            2000+ компаний уже запустили рекламу на автопилоте 🚀
           </p>
-          <Button size="lg" className="bg-white text-primary hover:bg-white/90">
-            <Icon name="Rocket" size={20} className="mr-2" />
-            Начать бесплатный период
+          <Button size="lg" className="bg-white text-primary hover:bg-white/95 shadow-2xl text-lg px-10 py-7 rounded-2xl hover:scale-105 transition-all">
+            <Icon name="Zap" size={24} className="mr-2" />
+            Запустить бесплатно
           </Button>
         </div>
       </section>
